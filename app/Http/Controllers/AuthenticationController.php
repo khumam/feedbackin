@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\InvalidStateException;
 
 class AuthenticationController extends Controller
 {
@@ -26,7 +27,11 @@ class AuthenticationController extends Controller
      */
     public function googleAuthCallback()
     {
-        $response = Socialite::driver('google')->user();
+        try {
+            $response = Socialite::driver('google')->user();
+        } catch (InvalidStateException $e) {
+            $response = Socialite::driver('google')->stateless()->user();
+        }
         $user = User::updateOrCreate([
             'provider' => 'google',
             'provider_id' => $response->id

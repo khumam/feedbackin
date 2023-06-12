@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('user_id');
+            $table->uuid('form_id')->nullable();
             $table->string('name');
-            $table->string('domain');
+            $table->string('main_url');
+            $table->string('redirect_url');
             $table->text('desc');
-            $table->integer('form_id');
+            $table->string('status');
             $table->timestamps();
-            $table->index('id');
+            $table->index(['id', 'user_id']);
         });
     }
 
