@@ -19,12 +19,5 @@
             {{ $project->desc }}
         </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-2 gap-6 mt-6">
-        <div class="bg-white rounded p-5">
-            <h1 class="font-semibold">Configure your feedback form</h1>
-        </div>
-        <div class="bg-white rounded p-5">
-            <h1 class="font-semibold">Your feedback form</h1>
-        </div>
-    </div>
+    <livewire:feedback-form-admin-livewire />
 </x-app-layout>
