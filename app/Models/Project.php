@@ -12,9 +12,12 @@ class Project extends Model
     use HasUuids;
 
     protected $fillable = [
+        'user_id',
+        'form_id',
         'name',
-        'domain',
+        'main_url',
+        'redirect_url',
         'desc',
-        'form_id'
+        'status'
     ];
 }

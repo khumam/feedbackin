@@ -11,7 +11,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,8 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'domain' => ['required'],
+            'main_url' => ['required'],
+            'redirect_url' => ['required'],
             'desc' => ['required'],
         ];
     }

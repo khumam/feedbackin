@@ -23,8 +23,17 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'domain' => ['required'],
+            'main_url' => ['required'],
+            'redirect_url' => ['required'],
             'desc' => ['required'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'desc.required' => 'The description field is required',
+            'main_url.required' => 'The main homepage field is required'
         ];
     }
 }
