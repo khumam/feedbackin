@@ -6,17 +6,14 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class FeedbackForm extends Model
 {
     use HasFactory;
     use HasUuids;
 
     protected $fillable = [
         'user_id',
-        'name',
-        'main_url',
-        'redirect_url',
-        'desc',
-        'status'
+        'project_id',
+        'config',
     ];
 }

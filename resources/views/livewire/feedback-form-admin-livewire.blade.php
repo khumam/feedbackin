@@ -4,41 +4,40 @@
             <h1 class="font-semibold mb-1">Configure your feedback form</h1>
             <p class="text-slate-400">Select the component you'd like to send to your customer</p>
             <div class="div grid grid-cols-1 gap-4 mt-6">
+                @foreach($configs as $config)
+                @if($config->type === 'text' || $config->type === 'email')
                 <div class="bg-slate-100 w-100 p-4 rounded flex items-center justify-between">
-                    <h1 class="font-medium">Customer's name</h1>
+                    <h1 class="font-medium">{{ $config->label }}</h1>
                     <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer">
+                        <input type="checkbox" @if($config->enable) checked @endif value="" class="sr-only peer" wire:change="toogleActive('{{$config->id}}')">
                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-600"></div>
                     </label>
                 </div>
+                @endif
+                @if($config->type === 'ratings')
                 <div class="bg-slate-100 w-100 p-4 rounded flex items-center justify-between">
-                    <h1 class="font-medium">Customer's email</h1>
+                    <h1 class="font-medium">{{ $config->label }}</h1>
                     <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer">
+                        <input type="checkbox" @if($config->enable) checked @endif value="" class="sr-only peer" wire:change="toogleActive('{{$config->id}}')">
                         <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-600"></div>
                     </label>
                 </div>
-                <div class="bg-slate-100 w-100 p-4 rounded flex items-center justify-between">
-                    <h1 class="font-medium">Rating stars</h1>
-                    <label class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" class="sr-only peer">
-                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-600"></div>
-                    </label>
-                </div>
+                @endif
+                @endforeach
             </div>
         </div>
         <div class="bg-white rounded p-5">
             <h1 class="font-semibold mb-1">Your feedback form</h1>
             <p class="text-slate-400">This is the customer point of view feedback form</p>
             <div class="grid grid-cols-1 gap-4 mt-6 p-6 bg-slate-100 rounded">
+                @foreach($configs as $config)
+                @if(($config->type === 'text' || $config->type === 'email') && $config->enable)
                 <div>
-                    <label class="block mb-2 font-medium text-slate-600">Your name</label>
-                    <input type="email" class="bg-gray-50 border border-gray-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Hannah A" required>
+                    <label class="block mb-2 font-medium text-slate-600">{{ $config->label }}</label>
+                    <input type="{{ $config->type }}" class="bg-gray-50 border border-gray-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="{{ $config->placeholder }}" required>
                 </div>
-                <div>
-                    <label class="block mb-2 font-medium text-slate-600">Your email</label>
-                    <input type="email" class="bg-gray-50 border border-gray-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="hannah@feedbackin.com" required>
-                </div>
+                @endif
+                @if($config->type === 'ratings' && $config->enable)
                 <div>
                     <label class="block mb-2 font-medium text-slate-600">Your ratings</label>
                     <div class="bg-gray-50 border border-gray-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 flex items-center">
@@ -65,6 +64,8 @@
 
                     </div>
                 </div>
+                @endif
+                @endforeach
                 <div>
                     <label class="block mb-2 font-medium text-slate-600">Your review</label>
                     <textarea type="email" class="bg-gray-50 border border-gray-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" rows="4" required></textarea>

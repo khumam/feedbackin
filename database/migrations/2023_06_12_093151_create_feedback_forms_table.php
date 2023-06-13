@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('feedback_forms', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('user_id');
-            $table->string('name');
-            $table->string('main_url');
-            $table->string('redirect_url');
-            $table->text('desc');
-            $table->string('status');
+            $table->uuid('project_id');
+            $table->json('config');
             $table->timestamps();
-            $table->index(['id', 'user_id']);
         });
     }
 
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('feedback_forms');
     }
 };

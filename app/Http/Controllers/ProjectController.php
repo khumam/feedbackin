@@ -31,7 +31,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request, ProjectService $projectService)
     {
         $act = $projectService->store($request);
-        return ($act) ? redirect()->route('dashboard') : back();
+        return ($act) ? redirect()->route('project.show', $act->id) : back();
     }
 
     /**
