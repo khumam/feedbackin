@@ -10,7 +10,7 @@
             </div>
             <div class="flex gap-4">
                 <a href="{{ route('project.edit', $project) }}" class="border border-orange-700 font-medium hover:bg-orange-800 active:bg-orange-700 px-5 py-2 text-slate-50 rounded bg-orange-500 hover:border-orange-300 active:border-orange-500">Edit</a>
-                <button class="bg-emerald-600 border-emerald-700 border font-medium px-5 py-2 rounded hover:bg-emerald-700 text-white active:bg-emerald-800">Open feedback page</button>
+                <a href="{{ route('feedback.preview', $project) }}" class="bg-emerald-600 border-emerald-700 border font-medium px-5 py-2 rounded hover:bg-emerald-700 text-white active:bg-emerald-800">Open feedback page</a>
             </div>
         </div>
     </x-slot>

@@ -68,7 +68,7 @@
                 @endforeach
                 <div>
                     <label class="block mb-2 font-medium text-slate-600">Your review</label>
-                    <textarea type="email" class="bg-gray-50 border border-gray-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" rows="4" required></textarea>
+                    <textarea type="email" class="bg-gray-50 border border-gray-300 text-slate-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-300 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="I realy love your product" rows="4" required></textarea>
                 </div>
             </div>
         </div>
